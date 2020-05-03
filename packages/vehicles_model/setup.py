@@ -19,7 +19,7 @@ with open(PACKAGE_DIR / 'VERSION') as f:
 
 
 setup(
-    name='vehicles_model',
+    name='vehicles-model',
     version=about['__version__'],
     description='Regression model to estimate sale prices of used cars',
     long_description=readme,
@@ -28,7 +28,7 @@ setup(
     url='https://github.com/ali-naji',
     license='MIT',
     packages=find_packages(exclude=('tests', 'docs')),
-    package_data={'vehicles_model': ['VERSION']},
+    package_data={'vehicles-model': ['VERSION']},
     install_requires=list_reqs(),
     python_requires='>=3.6.0',
     classifiers=[
