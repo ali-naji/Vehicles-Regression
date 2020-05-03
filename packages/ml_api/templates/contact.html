@@ -1,0 +1,51 @@
+{% extends 'base.html' %} {% block title %} Contact Us {% endblock %} {% block
+content %}
+<form class="mt-4" action="/contact" method="POST">
+  <div class="form-row p-1">
+    <div class="col-md-6">
+      <input
+        type="text"
+        name="fname"
+        class="form-control"
+        placeholder="First name"
+      />
+    </div>
+    <div class="col-md-6">
+      <input
+        type="text"
+        name="lname"
+        class="form-control"
+        placeholder="Last name"
+      />
+    </div>
+  </div>
+  <div class="form-row p-1">
+    <div class="col-md-12">
+      <input
+        type="text"
+        name="email"
+        class="form-control"
+        placeholder="Email"
+      />
+    </div>
+  </div>
+  <div class="form-row p-1">
+    <div class="col-md-12">
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        placeholder="Message"
+        name="msg"
+        required
+      ></textarea>
+    </div>
+  </div>
+  <div class="form-row p-1">
+    <button class="btn btn-primary btn-lg align-center" type="submit">
+      Send
+    </button>
+  </div>
+</form>
+
+{% endblock %}

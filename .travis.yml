@@ -1,0 +1,21 @@
+language: python
+python:
+  - "3.6"
+cache: pip
+script:
+  # installations
+  - pip install awscli
+  - cd packages/vehicles_model
+  - python setup.py sdist
+  - pip install -e .
+  - pip install -r ../ml_api/requirements.txt
+  - cd ../../
+  # tests
+  - pytest packages/vehicles_model/tests || travis_terminate 1;
+  - pytest packages/ml_api/tests || travis_terminate 1;
+  # package update
+  - aws s3 cp packages/vehicles_model/dist/ s3://mypypackages/vehicles_model --recursive --exclude "*" --include "*.gz"
+  # deployment
+  - eval $(aws ecr get-login --no-include-email --region us-west-1)
+  - make build-ml-api-aws tag-ml-api push-ml-api-aws
+  - aws ecs update-service --cluster ml-api-cluster --service ml-api-service --task-definition ml-api-task --force-new-deployment

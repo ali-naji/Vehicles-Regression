@@ -1,0 +1,7 @@
+jupyter_notebooks*
+.travis.yml
+packages/vehicles_model
+*.env
+*.log
+.git
+.gitignore

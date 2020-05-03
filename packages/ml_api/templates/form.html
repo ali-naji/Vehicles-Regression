@@ -1,0 +1,210 @@
+{% extends 'base.html' %} {% block title %} Input Form {% endblock %} {% block
+content %}
+<form class="text-center mt-4" action="/form" method="POST">
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault01">State</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault01"
+        name="state"
+        required
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault02">Region</label>
+      <input
+        type="text"
+        class="form-control"
+        name="region"
+        id="validationDefault02"
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault03">Year of make</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault03"
+        name="year"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault04">Manufacturer</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault04"
+        name="manufacturer"
+        required
+      />
+    </div>
+    <div class="col-md-5 mb-3">
+      <label for="validationDefault05">Model</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault05"
+        name="model"
+        required
+      />
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault06">Condition</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault06"
+        name="condition"
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault07">Cylinders</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault07"
+        name="cylinders"
+      />
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault08">Fuel</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault08"
+        name="fuel"
+        required
+      />
+    </div>
+    <div class="col-md-6 mb-3">
+      <label for="validationDefault09">Odometer</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault09"
+        name="odometer"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-row justify-content-center">
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault10">Title Status</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault10"
+        name="title_status"
+        required
+      />
+    </div>
+    <div class="col-md-3 mb-3">
+      <label for="validationDefault12">Transmission</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault12"
+        name="transmission"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault13">Drive</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault13"
+        name="drive"
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault14">Size</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault14"
+        name="size"
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault15">Type</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault15"
+        name="type"
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault16">Paint Color</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault16"
+        name="paint_color"
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault17">Latitude</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault17"
+        name="lat"
+        required
+      />
+    </div>
+    <div class="col-md-4 mb-3">
+      <label for="validationDefault18">Longitude</label>
+      <input
+        type="text"
+        class="form-control"
+        id="validationDefault18"
+        name="long"
+        required
+      />
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-3">
+      <label for="validationDefault19">Description</label>
+      <textarea
+        class="form-control"
+        id="exampleFormControlTextarea1"
+        id="validationDefault19"
+        rows="3"
+        name="description"
+        required
+      ></textarea>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="checkbox"
+        value=""
+        id="invalidCheck2"
+        required
+      />
+      <label class="form-check-label" for="invalidCheck2">
+        Agree to terms and conditions
+      </label>
+    </div>
+  </div>
+  <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+
+{% endblock %}

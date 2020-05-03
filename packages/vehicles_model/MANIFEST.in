@@ -1,0 +1,14 @@
+include *.txt
+include *.md
+include *.cfg
+exclude *.pkl
+recursive-include ./vehicles_model/*
+
+exclude vehicles_model/trained_models/*.pkl
+include vehicles_model/VERSION
+
+include ./requirements.txt
+exclude *.log
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
