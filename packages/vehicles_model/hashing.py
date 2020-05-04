@@ -9,8 +9,8 @@ s3 = boto3.client('s3', aws_access_key_id=os.environ.get(
     'AWS_ACCESS_KEY_ID'), aws_secret_access_key=os.environ.get('AWS_SECRET_ACCESS_KEY'))
 
 file = f"vehicles-model-{_version}.tar.gz"
-s3.download_file('mypypackages', "vehicles_model/"+file, '.')
-s3.download_file('mypypackages', "vehicles_model/index.html", '.')
+s3.download_file('mypypackages', "vehicles-model/"+file, '.')
+s3.download_file('mypypackages', "vehicles-model/index.html", '.')
 BLOCK_SIZE = 65536  # The size of each read from the file
 
 file_hash = hashlib.sha256()
