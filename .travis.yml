@@ -9,10 +9,10 @@ script:
   - python setup.py sdist
   - pip install -e .
   - pip install -r ../ml_api/requirements.txt
+  - cd ../..
   # tests
-  - pytest tests || travis_terminate 1;
-  - cd ../ml_api
-  - pytest tests || travis_terminate 1;
+  - python -m pytest packages/vehicles_model/tests || travis_terminate 1;
+  - python -m pytest packages/ml_api/tests || travis_terminate 1;
   # package update
   - aws s3 cp packages/vehicles_model/dist s3://mypypackages/vehicles-model --recursive
   # deployment

@@ -8,7 +8,7 @@ WORKDIR /opt/ml_api
 ADD packages/ml_api /opt/ml_api
 
 # setting variables and build arguments
-ARG PIP_EXTRA_INDEX_URL
+ARG PIP_REMOTE_PACKAGE
 ARG TRUSTED_HOST
 ARG AWS_ACCESS_KEY_ID
 ARG AWS_SECRET_ACCESS_KEY
