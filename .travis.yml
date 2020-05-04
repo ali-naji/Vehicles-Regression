@@ -14,7 +14,7 @@ script:
   - python -m pytest packages/vehicles_model/tests || travis_terminate 1;
   - python -m pytest packages/ml_api/tests || travis_terminate 1;
   # package update
-  - aws s3 cp packages/vehicles_model/dist/* s3://mypypackages/vehicles-model
+  - aws s3 cp packages/vehicles_model/dist s3://mypypackages/vehicles-model --recursive --exclude "*" --include "*.tar.gz"
   - python packages/vehicles_model/hashing.py || travis_terminate 1;
   # deployment
   - eval $(aws ecr get-login --no-include-email --region us-west-1)
