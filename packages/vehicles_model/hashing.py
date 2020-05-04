@@ -28,8 +28,8 @@ soup = BeautifulSoup(html)
 for link in soup.findAll("a"):
     if link.string == filename:
         link['href'] = href
-        with open('index.html', 'w') as file:
-            file.write(str(soup))
+        with open('index.html', 'w', encoding='utf-8') as file:
+            file.write(str(soup.prettify()))
         s3.upload_file('index.html', 'mypypackages',
                        'vehicles-model/index.html')
         sys.exit()
