@@ -6,14 +6,6 @@ import pandas as pd
 import json
 
 
-def test_health_endpoint_returns_200(flask_test_client):
-    # When
-    response = flask_test_client.get('/health')
-
-    # Then
-    assert response.status_code == 200
-
-
 def test_versions(flask_test_client):
     response = json.loads(flask_test_client.get('/version').data)
 
@@ -26,7 +18,7 @@ def test_prediction_endpoint_returns_prediction(flask_test_client):
 
     sample_input = sample_data[0:1].to_json(orient='records')
 
-    response = flask_test_client.post('/v1/predict',
+    response = flask_test_client.post('test',
                                       json=json.loads(sample_input))
     assert response.status_code == 200
     response_json = json.loads(response.data)

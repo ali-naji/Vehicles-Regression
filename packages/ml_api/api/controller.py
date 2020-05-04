@@ -37,6 +37,22 @@ def form():
 
         return render_template('result.html', prediction=prediction)
 
+@prediction_app.route('/test', methods=['POST'])
+def test_prediction():
+    json_data = request.get_json()
+    _logger.debug(f'Inputs: {json_data}')
+
+    result = predict(json_data)
+# Step 4: Convert numpy ndarray to list
+    predictions = result.get('predictions').tolist()
+    version = result.get('version')
+
+    # Step 5: Return the response as JSON
+    return jsonify({'predictions': predictions,
+                    'version': version})
+    
+
+
 
 @prediction_app.route('/contact', methods=['GET', 'POST'])
 def contact():
