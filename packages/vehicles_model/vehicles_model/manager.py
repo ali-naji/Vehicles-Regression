@@ -24,7 +24,6 @@ def load_dataset(dataset_file='vehicles.csv'):
 
     return df
 
-
 def load_pipeline(pipeline_file=f"{config.PIPELINE_FILENAME}{_version}.pkl"):
     
     save_path = (config.TRAINED_MODEL_DIR / pipeline_file).absolute().as_posix()

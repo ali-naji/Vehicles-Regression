@@ -9,13 +9,13 @@ script:
   - python setup.py sdist
   - pip install -e .
   - pip install -r ../ml_api/requirements.txt
-  - cd ../../
   # tests
-  - pytest packages/vehicles_model/tests || travis_terminate 1;
-  - pytest packages/ml_api/tests || travis_terminate 1;
+  - pytest tests || travis_terminate 1;
+  - cd ../ml_api
+  - pytest tests || travis_terminate 1;
   # package update
-  - aws s3 cp packages/vehicles_model/dist/ s3://mypypackages/vehicles_model --recursive --exclude "*" --include "*.gz"
+  - aws s3 cp packages/vehicles_model/dist s3://mypypackages/vehicles-model --recursive
   # deployment
   - eval $(aws ecr get-login --no-include-email --region us-west-1)
   - make build-ml-api-aws tag-ml-api push-ml-api-aws
-  - aws ecs update-service --cluster ml-api-cluster --service ml-api-service --task-definition ml-api-task --force-new-deployment
+  #- aws ecs update-service --cluster ml-api-cluster --service ml-api-service --task-definition ml-api-task --force-new-deployment
