@@ -19,4 +19,4 @@ script:
   # deployment
   - eval $(aws ecr get-login --no-include-email --region us-west-1)
   - make build-ml-api-aws tag-ml-api push-ml-api-aws
-  #- aws ecs update-service --cluster ml-api-cluster --service ml-api-service --task-definition ml-api-task --force-new-deployment
+  - aws ecs update-service --cluster vehicles-model-cluster --service vehicles-model-service --task-definition vehicles-model-task --force-new-deployment
