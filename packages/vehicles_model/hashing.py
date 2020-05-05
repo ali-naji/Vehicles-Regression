@@ -41,4 +41,5 @@ soup.html.body.append(new_a)
 soup.html.body.append(soup.new_tag('br'))
 with open('index.html', 'w', encoding='utf-8') as filename:
     filename.write(str(soup.prettify()))
-s3.upload_file('index.html', 'mypypackages', 'vehicles-model/index.html')
+s3.upload_file('index.html', 'mypypackages',
+               'vehicles-model/index.html', ExtraArgs={'ContentType': 'text/html'})
