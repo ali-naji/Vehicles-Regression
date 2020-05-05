@@ -31,7 +31,7 @@ for link in soup.findAll("a"):
         with open('index.html', 'w', encoding='utf-8') as file:
             file.write(str(soup.prettify()))
         s3.upload_file('index.html', 'mypypackages',
-                       'vehicles-model/index.html', extra_args={'Metadata': {'ContentType': 'text/html'}})
+                       'vehicles-model/index.html', ExtraArgs= {'ContentType': 'text/html'})
         sys.exit()
 
 new_a = soup.new_tag('a')
