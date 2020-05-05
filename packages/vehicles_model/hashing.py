@@ -26,12 +26,12 @@ html = open("index.html").read()
 soup = BeautifulSoup(html)
 
 for link in soup.findAll("a"):
-    if link.string == filename:
+    if str(link.string) == filename:
         link['href'] = href
         with open('index.html', 'w', encoding='utf-8') as file:
             file.write(str(soup.prettify()))
         s3.upload_file('index.html', 'mypypackages',
-                       'vehicles-model/index.html', ExtraArgs= {'ContentType': 'text/html'})
+                       'vehicles-model/index.html', ExtraArgs={'ContentType': 'text/html'})
         sys.exit()
 
 new_a = soup.new_tag('a')
@@ -39,6 +39,6 @@ new_a.string = filename
 new_a['href'] = href
 soup.html.body.append(new_a)
 soup.html.body.append(soup.new_tag('br'))
-with open('index.html', 'w') as filename:
-    filename.write(str(soup))
+with open('index.html', 'w', encoding='utf-8') as filename:
+    filename.write(str(soup.prettify()))
 s3.upload_file('index.html', 'mypypackages', 'vehicles-model/index.html')
