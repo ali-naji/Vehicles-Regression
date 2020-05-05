@@ -1,4 +1,6 @@
 jupyter_notebooks*
+*/env*
+*/venv*
 .travis.yml
 packages/vehicles_model
 *.env

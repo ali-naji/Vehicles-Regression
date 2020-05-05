@@ -28,7 +28,7 @@ setup(
     url='https://github.com/ali-naji',
     license='MIT',
     packages=find_packages(exclude=('tests', 'docs')),
-    package_data={'vehicles-model': ['VERSION']},
+    package_data={'vehicles_model': ['VERSION']},
     install_requires=list_reqs(),
     python_requires='>=3.6.0',
     classifiers=[
