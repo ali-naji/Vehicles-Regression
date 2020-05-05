@@ -26,13 +26,8 @@ html = open("index.html").read()
 soup = BeautifulSoup(html)
 
 for link in soup.findAll("a"):
-    if str(link.string) == filename:
-        link['href'] = href
-        with open('index.html', 'w', encoding='utf-8') as file:
-            file.write(str(soup.prettify()))
-        s3.upload_file('index.html', 'mypypackages',
-                       'vehicles-model/index.html', ExtraArgs={'ContentType': 'text/html'})
-        sys.exit()
+    if str(link.string).strip() == filename:
+        link.decompose()
 
 new_a = soup.new_tag('a')
 new_a.string = filename
