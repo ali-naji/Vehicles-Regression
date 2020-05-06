@@ -16,7 +16,7 @@ s3 = boto3.client('s3', aws_access_key_id=os.environ.get(
 def load_dataset(dataset_file='vehicles.csv'):
     save_path = (config.DATASET_DIR / dataset_file).absolute().as_posix()
     if not os.path.exists(save_path):
-        _logger.info('Dataset not found, will downloaded from source')
+        _logger.info(f'Dataset not found in {save_path}, will downloaded from source')
         s3.download_file('myprivatedatasets', 'vehicles_model/'+ dataset_file,  save_path)
 
     df = pd.read_csv(save_path)
@@ -28,10 +28,10 @@ def load_pipeline(pipeline_file=f"{config.PIPELINE_FILENAME}{_version}.pkl"):
     
     save_path = (config.TRAINED_MODEL_DIR / pipeline_file).absolute().as_posix()
     if not os.path.exists(save_path):
-        _logger.info('Trained model not found, will downloaded from source')
+        _logger.info(f'Trained model not found in {save_path}, will downloaded from source')
         s3.download_file('mytrainedmodels', 'vehicles_model/' +pipeline_file, save_path)
     _pipeline = joblib.load(config.TRAINED_MODEL_DIR / pipeline_file)
-    _logger.info('pipeline loaded successfully')
+    _logger.info(f'pipeline loaded successfully from path : {save_path}')
 
     return _pipeline
 
