@@ -26,10 +26,10 @@ def load_dataset(dataset_file='vehicles.csv'):
 
 def load_pipeline(pipeline_file=f"{config.PIPELINE_FILENAME}{_version}.pkl"):
     
-    save_path = (config.TRAINED_MODEL_DIR / pipeline_file).absolute().as_posix()
-    if not os.path.exists(save_path):
-        _logger.info('Trained model not found, will downloaded from source')
-        s3.download_file('mytrainedmodels', 'vehicles_model/' +pipeline_file, save_path)
+    # save_path = (config.TRAINED_MODEL_DIR / pipeline_file).absolute().as_posix()
+    # if not os.path.exists(save_path):
+    #     _logger.info('Trained model not found, will downloaded from source')
+    #     s3.download_file('mytrainedmodels', 'vehicles_model/' +pipeline_file, save_path)
     _pipeline = joblib.load(config.TRAINED_MODEL_DIR / pipeline_file)
     _logger.info('pipeline loaded successfully')
 
