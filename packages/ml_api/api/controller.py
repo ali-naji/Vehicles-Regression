@@ -31,7 +31,7 @@ def form():
             input_data[key] = [float(input_data[key][0])]
 
         _logger.info(f'Inputs: {input_data}')
-
+        
         prediction = predict(input_data)['predictions'][0]
         _logger.info(f'Outputs: {prediction}')
 

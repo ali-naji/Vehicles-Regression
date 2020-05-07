@@ -10,7 +10,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.metrics import mean_squared_error as mse, r2_score
-from sklearn.ensemble import RandomForestRegressor
+from sklearn.neural_network import MLPRegressor
 from sklearn.preprocessing import OneHotEncoder
 from math import sqrt
 
@@ -43,13 +43,10 @@ class Pipeline:
         self.ohe = OneHotEncoder(sparse=False)
         self.selector = SelectFromModel(Lasso(alpha=alpha,
                                               random_state=random_state))
-        self.model = RandomForestRegressor(n_estimators=300,
-                                           min_samples_split=2,
-                                           min_samples_leaf=10,
-                                           max_features='auto',
-                                           max_depth=15,
-                                           n_jobs=-1,
-                                           random_state=random_state)
+        self.model = MLPRegressor(hidden_layer_sizes=(100,),
+                                  batch_size=50,
+                                  alpha=1e-5,
+                                  random_state=random_state)
 
         # groups of variables to engineer
         self.target = target
@@ -159,8 +156,8 @@ class Pipeline:
     def impute_outliers(self, df):
         df = df.copy()
         for var in self.numerical_to_impute:
-            df[var] = np.where(df[var].between(self.numerical_ranges[var][0], self.numerical_ranges[var][1]),
-                               df[var], self.medians_dict[var])
+            df[var] = np.where(df[var].between(self.numerical_ranges[var][0],
+                                               self.numerical_ranges[var][1]), df[var], self.medians_dict[var])
         return df
 
     def apply_scaler(self, df):

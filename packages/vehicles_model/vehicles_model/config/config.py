@@ -11,7 +11,7 @@ import pathlib
 PACKAGE_ROOT = pathlib.Path(vehicles_model.__file__).resolve().parent
 DATASET_DIR = PACKAGE_ROOT / 'datasets'
 TRAINED_MODEL_DIR = PACKAGE_ROOT / 'trained_models'
-PIPELINE_FILENAME = "random_forest_pipeline_v"
+PIPELINE_FILENAME = "neuralnet_pipeline_v"
 
 TARGET = 'price'
 

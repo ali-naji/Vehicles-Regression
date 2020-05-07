@@ -3,14 +3,61 @@ content %}
 <form class="text-center mt-4" action="/form" method="POST">
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationDefault01">State</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault01"
-        name="state"
-        required
-      />
+      <label for="inputState">State</label>
+      <select id="inputState" class="form-control" name="state" required>
+        <option selected value="">Not Selected</option>
+        <option value="al">AL</option>
+        <option value="ak">AK</option>
+        <option value="az">AZ</option>
+        <option value="ar">AR</option>
+        <option value="ca">CA</option>
+        <option value="co">CO</option>
+        <option value="ct">CT</option>
+        <option value="de">DE</option>
+        <option value="dc">DC</option>
+        <option value="fl">FL</option>
+        <option value="ga">GA</option>
+        <option value="hi">HI</option>
+        <option value="id">ID</option>
+        <option value="il">IL</option>
+        <option value="in">IN</option>
+        <option value="ia">IA</option>
+        <option value="ks">KS</option>
+        <option value="ky">KY</option>
+        <option value="la">LA</option>
+        <option value="me">ME</option>
+        <option value="md">MD</option>
+        <option value="ma">MA</option>
+        <option value="mi">MI</option>
+        <option value="mn">MN</option>
+        <option value="ms">MS</option>
+        <option value="mo">MO</option>
+        <option value="mt">MT</option>
+        <option value="ne">NE</option>
+        <option value="nv">NV</option>
+        <option value="nh">NH</option>
+        <option value="nj">NJ</option>
+        <option value="nm">NM</option>
+        <option value="ny">NY</option>
+        <option value="nc">NC</option>
+        <option value="nd">ND</option>
+        <option value="oh">OH</option>
+        <option value="ok">OK</option>
+        <option value="or">OR</option>
+        <option value="pa">PA</option>
+        <option value="ri">RI</option>
+        <option value="sc">SC</option>
+        <option value="sd">SD</option>
+        <option value="tn">TN</option>
+        <option value="tx">TX</option>
+        <option value="ut">UT</option>
+        <option value="vt">VT</option>
+        <option value="va">VA</option>
+        <option value="wa">WA</option>
+        <option value="wv">WV</option>
+        <option value="wi">WI</option>
+        <option value="wy">WY</option>
+      </select>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault02">Region</label>
@@ -24,11 +71,12 @@ content %}
     <div class="col-md-4 mb-3">
       <label for="validationDefault03">Year of make</label>
       <input
-        type="text"
+        type="number"
         class="form-control"
         id="validationDefault03"
         name="year"
-        required
+        min="1890"
+        max="2021"
       />
     </div>
   </div>
@@ -54,135 +102,183 @@ content %}
       />
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationDefault06">Condition</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault06"
-        name="condition"
-      />
+      <label for="conditionVal">Condition</label>
+      <select id="conditionVal" class="form-control" name="condition" required>
+        <option selected value="">Not Selected</option>
+        <option>new</option>
+        <option>excellent</option>
+        <option>good</option>
+        <option>fair</option>
+        <option>like new</option>
+        <option>salvage</option>
+      </select>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-3 mb-3">
-      <label for="validationDefault07">Cylinders</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault07"
-        name="cylinders"
-      />
+      <label for="numCylinders">Cylinders</label>
+      <select id="numCylinders" class="form-control" name="cylinders" required>
+        <option selected value="">Not Selected</option>
+        <option>3 cylinders</option>
+        <option>4 cylinders</option>
+        <option>5 cylinders</option>
+        <option>6 cylinders</option>
+        <option>8 cylinders</option>
+        <option>10 cylinders</option>
+        <option>12 cylinders</option>
+        <option>other</option>
+      </select>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationDefault08">Fuel</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault08"
-        name="fuel"
-        required
-      />
+      <label for="fuelType">Fuel</label>
+      <select id="fuelType" class="form-control" name="fuel" required>
+        <option selected value="">Not Selected</option>
+        <option>gas</option>
+        <option>diesel</option>
+        <option>electric</option>
+        <option>hybrid</option>
+        <option>other</option>
+      </select>
     </div>
     <div class="col-md-6 mb-3">
-      <label for="validationDefault09">Odometer</label>
+      <label for="odometerRead">Odometer</label>
       <input
-        type="text"
+        type="number"
         class="form-control"
-        id="validationDefault09"
+        id="odometerRead"
         name="odometer"
+        min="0"
+        max="5000000"
         required
       />
     </div>
   </div>
   <div class="form-row justify-content-center">
     <div class="col-md-3 mb-3">
-      <label for="validationDefault10">Title Status</label>
-      <input
-        type="text"
+      <label for="titleStatus">Title Status</label>
+      <select
+        id="titleStatus"
         class="form-control"
-        id="validationDefault10"
         name="title_status"
         required
-      />
+      >
+        <option selected value="">Not Selected</option>
+        <option>clean</option>
+        <option>salvage</option>
+        <option>rebuilt</option>
+        <option>lien</option>
+        <option>missing</option>
+        <option>parts only</option>
+      </select>
     </div>
     <div class="col-md-3 mb-3">
-      <label for="validationDefault12">Transmission</label>
-      <input
-        type="text"
+      <label for="transmissionType">Transmission</label>
+      <select
+        id="transmissionType"
         class="form-control"
-        id="validationDefault12"
         name="transmission"
         required
-      />
+      >
+        <option selected value="">Not Selected</option>
+        <option>automatic</option>
+        <option>manual</option>
+        <option>other</option>
+      </select>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationDefault13">Drive</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault13"
-        name="drive"
-      />
+      <label for="driveType">Drive</label>
+      <select id="driveType" class="form-control" name="drive" required>
+        <option selected value="">Not Selected</option>
+        <option>rwd</option>
+        <option>fwd</option>
+        <option>4wd</option>
+      </select>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationDefault14">Size</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault14"
-        name="size"
-      />
+      <label for="sizeType">Size</label>
+      <select id="sizeType" class="form-control" name="size" required>
+        <option selected value="">Not Selected</option>
+        <option>full-size</option>
+        <option>mid-size</option>
+        <option>compact</option>
+        <option>sub-compact</option>
+      </select>
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationDefault15">Type</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault15"
-        name="type"
-      />
+      <label for="carType">Type</label>
+      <select id="carType" class="form-control" name="type" required>
+        <option selected value="">Not Selected</option>
+        <option>sedan</option>
+        <option>SUV</option>
+        <option>convertible</option>
+        <option>coupe</option>
+        <option>hatchback</option>
+        <option>offroad</option>
+        <option>van</option>
+        <option>mini-van</option>
+        <option>bus</option>
+        <option>truck</option>
+        <option>wagon</option>
+        <option>pickup</option>
+        <option>other</option>
+      </select>
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-4 mb-3">
-      <label for="validationDefault16">Paint Color</label>
-      <input
-        type="text"
-        class="form-control"
-        id="validationDefault16"
-        name="paint_color"
-      />
+      <label for="carColor">Color</label>
+      <select id="carColor" class="form-control" name="paint_color" required>
+        <option selected value="">Not Selected</option>
+        <option>white</option>
+        <option>black</option>
+        <option>red</option>
+        <option>grey</option>
+        <option>blue</option>
+        <option>orange</option>
+        <option>green</option>
+        <option>brown</option>
+        <option>yellow</option>
+        <option>purple</option>
+        <option>silver</option>
+        <option>custom</option>
+      </select>
     </div>
     <div class="col-md-4 mb-3">
       <label for="validationDefault17">Latitude</label>
       <input
-        type="text"
+        type="number"
+        min="23"
+        max="50"
         class="form-control"
         id="validationDefault17"
         name="lat"
+        step="0.0001"
         required
       />
     </div>
     <div class="col-md-4 mb-3">
-      <label for="validationDefault18">Longitude</label>
+      <label for="longitude">Longitude</label>
       <input
-        type="text"
+        type="number"
+        min="-125"
+        max="-66"
         class="form-control"
-        id="validationDefault18"
+        id="longitude"
         name="long"
+        step="0.0001"
         required
       />
     </div>
   </div>
   <div class="form-row">
     <div class="col-md-12 mb-3">
-      <label for="validationDefault19">Description</label>
+      <label for="descriptionText">Description</label>
       <textarea
+        minlength="25"
         class="form-control"
-        id="exampleFormControlTextarea1"
-        id="validationDefault19"
+        id="descriptionText"
         rows="3"
         name="description"
         required
