@@ -19,11 +19,11 @@ VARS_TO_DROP = ['id', 'url', 'region_url', 'image_url', 'vin', 'county']
 
 CATEGORICAL_TO_IMPUTE = ['manufacturer', 'model', 'condition', 'cylinders',
                          'fuel', 'title_status', 'transmission', 'drive',
-                         'size', 'type', 'paint_color', 'description']
+                         'size', 'type', 'paint_color', 'description', 'state', 'region']
 
 CATEGORICALS = ['manufacturer', 'model', 'condition', 'cylinders',
                 'fuel', 'title_status', 'transmission', 'drive',
-                'size', 'type', 'paint_color']
+                'size', 'type', 'paint_color', 'state', 'region']
 
 NUMERICAL_TO_IMPUTE = ['year', 'price', 'odometer', 'lat', 'long']
 
@@ -31,8 +31,6 @@ OHE_FEATS = ['condition', 'cylinders', 'fuel', 'title_status', 'transmission',
              'drive', 'size']
 
 ORD_FEATS = ['region', 'manufacturer', 'model', 'type', 'paint_color', 'state']
-
-VARS_TO_DROP = ['id', 'url', 'region_url', 'image_url', 'vin', 'county']
 
 NUM_RANGES = {'price': (500.0, 1000000.0), 'year': (1890.0, 2021.0), 'odometer': (0.0, 5000000.0),
               'long': (-125.0, -66.0), 'lat': (23.0, 50.0)}
