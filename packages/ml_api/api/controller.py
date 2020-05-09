@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, render_template
+from flask import Blueprint, request, jsonify, render_template, flash, redirect
 from api.config import get_logger
 from vehicles_model.predict import predict
 from vehicles_model import __version__ as model_version
@@ -31,11 +31,12 @@ def form():
             input_data[key] = [float(input_data[key][0])]
 
         _logger.info(f'Inputs: {input_data}')
-        
+
         prediction = predict(input_data)['predictions'][0]
         _logger.info(f'Outputs: {prediction}')
 
         return render_template('result.html', prediction=prediction)
+
 
 @prediction_app.route('/test', methods=['POST'])
 def test_prediction():
@@ -50,8 +51,6 @@ def test_prediction():
     # Step 5: Return the response as JSON
     return jsonify({'predictions': predictions,
                     'version': version})
-    
-
 
 
 @prediction_app.route('/contact', methods=['GET', 'POST'])
@@ -59,8 +58,8 @@ def contact():
     if request.method == 'GET':
         return render_template('contact.html')
     else:
-        contact_dict = {key: value for (key, value) in request.form.items()}
-        return str(contact_dict)
+        flash("Message sent successfully. Thanks for letting us know")
+        return redirect('/contact')
 
 
 @prediction_app.route('/version', methods=['GET'])
