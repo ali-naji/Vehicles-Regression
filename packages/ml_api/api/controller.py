@@ -4,6 +4,7 @@ from vehicles_model.predict import predict
 from vehicles_model import __version__ as model_version
 from api import __version__ as api_version
 from vehicles_model.config import config
+import numpy as np
 
 _logger = get_logger(logger_name=__name__)
 
@@ -24,18 +25,20 @@ def form():
         input_data = {key: [value] for (
             key, value) in request.form.items()}
 
-        for key in config.VARS_TO_DROP:
-            input_data[key] = ['']
-        input_data[config.TARGET] = [1000.0]
-        for key in config.NUMERICAL_TO_IMPUTE:
-            input_data[key] = [float(input_data[key][0])]
+        input_dict = create_input_dict(input_data)
 
-        _logger.info(f'Inputs: {input_data}')
+        _logger.info(f'Inputs: {input_dict}')
 
-        prediction = predict(input_data)['predictions'][0]
+        prediction = np.round(predict(input_dict)['predictions'][0], 2)
         _logger.info(f'Outputs: {prediction}')
 
         return render_template('result.html', prediction=prediction)
+
+
+def create_input_dict(input_dict):
+    ''' returns dictionary matching column order of training-data '''
+    return {'id': [np.nan], 'url': [np.nan], 'region': input_dict['region'], 'region_url': [np.nan], 'price': [1000],
+            'year': [float(input_dict['year'][0])], 'manufacturer': input_dict['manufacturer'], 'model': input_dict['model'], 'condition': input_dict['condition'], 'cylinders': input_dict['cylinders'], 'fuel': input_dict['fuel'], 'odometer': [float(input_dict['odometer'][0])], 'title_status': input_dict['title_status'], 'transmission': input_dict['transmission'], 'vin': [np.nan], 'drive': input_dict['drive'], 'size': input_dict['size'], 'type': input_dict['type'], 'paint_color': input_dict['paint_color'], 'image_url': [np.nan], 'description': input_dict['description'], 'county': [np.nan], 'state': input_dict['state'], 'lat': [float(input_dict['lat'][0])], 'long': [float(input_dict['long'][0])]}
 
 
 @prediction_app.route('/test', methods=['POST'])

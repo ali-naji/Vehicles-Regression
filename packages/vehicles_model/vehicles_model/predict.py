@@ -12,7 +12,7 @@ _logger = logging.getLogger('vehicles_model')
 def predict(data):
     data = pd.DataFrame(data)
     pipeline = load_pipeline()
-    predictions = np.exp(pipeline.predict(data))
+    predictions = pipeline.predict(data)
     results = {'predictions': predictions, "version": _version}
     _logger.info(
         f"making predictions with model version: {_version} "
